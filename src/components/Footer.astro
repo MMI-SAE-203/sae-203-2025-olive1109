@@ -1,0 +1,73 @@
+---
+import Logo from '../assets/icones/Logo.svg';
+import Insta from '../assets/icones/insta.svg';
+import Facebook from '../assets/icones/fb/Default.svg';
+import Twitter from '../assets/icones/X n/Default.svg';
+import Youtube from '../assets/icones/YT.svg';
+import Tiktok from '../assets/icones/tik tok.svg'
+---
+
+<footer class="px-10 py-8 bg-lime-500 bottom-0">    
+    <!-- Version desktop -->
+    <div class="container mx-auto hidden md:flex flex-row justify-between items-start">
+        <!-- Logo et titre -->
+        <div class="flex items-center">
+            <Logo alt="Logo" class="w-16 h-auto mr-4"/>
+            <h2 class="text-white text-4xl font-extrabold tracking-wider">MIAULLYWOOD</h2>
+        </div>
+        
+        <!-- Menu -->
+        <div class="mx-8">
+            <h3 class="text-white text-2xl mb-4">Menu :</h3>
+            <ul class="space-y-1">
+                <li><a href="/" class="text-white hover:underline">Accueil</a></li>
+                <li><a href="/contact" class="text-white hover:underline">Contact</a></li>
+                <li><a href="/partenariats" class="text-white hover:underline">Partenariats</a></li>
+                <li><a href="/a-propos" class="text-white hover:underline">À propos</a></li>
+            </ul>
+        </div>
+
+        <!-- Réseaux sociaux -->
+        <div>
+            <h3 class="text-white text-2xl mb-4">Nous suivres :</h3>
+            <div class="flex items-center space-x-4">
+                <a href="https://x.com/?lang=fr"><Twitter class="w-8 h-8"/></a>
+                <a href="https://www.instagram.com"><Insta class="w-8 h-8"/></a>
+                <a href="https://www.tiktok.com"><Tiktok class="w-8 h-8"/></a>
+                <a href="https://www.youtube.com"><Youtube class="w-8 h-8"/></a>
+                <a href="https://www.facebook.com/?locale=fr_FR"><Facebook class="w-8 h-8"/></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Version mobile -->
+    <div class="container mx-auto flex md:hidden flex-col items-start space-y-6">
+        <!-- Logo et titre -->
+        <div class="flex items-center">
+            <Logo alt="Logo" class="w-12 h-auto mr-3"/>
+            <h2 class="text-white text-3xl font-extrabold tracking-wider">MIAULLYWOOD</h2>
+        </div>
+        
+        <!-- Réseaux sociaux (en 2ème position sur mobile) -->
+        <div class="w-full">
+            <h3 class="text-white text-xl mb-2">Nous suivres :</h3>
+            <div class="flex items-center space-x-3">
+                <a href="https://x.com/?lang=fr" class="text-white"><Twitter class="w-6 h-6"/></a>
+                <a href="https://www.instagram.com" class="text-white"><Insta class="w-6 h-6"/></a>
+                <a href="https://www.tiktok.com" class="text-white"><Tiktok class="w-6 h-6"/></a>
+                <a href="https://www.youtube.com" class="text-white"><Youtube class="w-6 h-6"/></a>
+                <a href="https://www.facebook.com/?locale=fr_FR" class="text-white"><Facebook class="w-6 h-6"/></a>
+            </div>
+        </div>
+        
+        <!-- Menu (en 3ème position sur mobile) -->
+        <div class="w-full">
+            <h3 class="text-white text-xl mb-2">Menu :</h3>
+            <ul class="space-y-0.5">
+                <li><a href="/" class="text-white text-sm">Accueil</a></li>
+                <li><a href="/contact" class="text-white text-sm">Contact</a></li>
+                <li><a href="/partenariats" class="text-white text-sm">Partenariats</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
