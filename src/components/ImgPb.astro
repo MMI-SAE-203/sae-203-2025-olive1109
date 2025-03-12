@@ -1,0 +1,18 @@
+---
+import { Picture } from 'astro:assets';
+import { pb } from "../../backend/backend.mjs";
+const { record, field = "imgUrl", alt, classPicture, classImg, thumb = "1024x1024" } = Astro.props;
+
+const imageUrl = record?.[field] ? pb.files.getURL(record, record[field], { thumb }) : null;
+---
+
+{imageUrl && (
+  <Picture 
+    pictureAttributes={{ class: classPicture }} 
+    class={classImg}
+    inferSize={true} 
+    formats={['avif', 'webp']} 
+    alt={alt || "Image"} 
+    src={imageUrl} 
+  />
+)}

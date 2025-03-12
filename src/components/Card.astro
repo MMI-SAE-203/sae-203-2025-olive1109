@@ -1,0 +1,31 @@
+    --- 
+    import ImgPb from './ImgPb.astro';
+    const { ...film } = Astro.props;
+    ---
+
+    <div class="w-100 h-auto flex flex-colun bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+        <!-- Image Section -->
+        <div class="relative group align-middle">
+            <a href={`/film/${film.id}`}>
+                <ImgPb 
+                record={film} 
+                field="image" 
+                alt={film.imgAlt || 'Affiche du film'} 
+                classPicture="w-full h-auto object-cover" 
+                classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+                />
+            </a>
+        </div>
+      
+        <!-- Content Section -->
+        <div class="w-60 p-4 space-y-4">
+            <!-- Film Title -->
+            <h3 class="text-xl font-semibold text-gray-900 m-0">{film.titre}</h3>
+            
+            <!-- Film Seance Date -->
+            <p class="text-sm text-gray-500 mb-2">📅 {new Date(film.Seance).toLocaleDateString()}</p>
+            
+            <!-- Film Synopsis -->
+            <p class="text-gray-700 line-clamp-2">{film.synopsis}</p>
+        </div>
+    </div>

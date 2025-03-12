@@ -1,10 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Chat from '../assets/images/chat.webp';
+import Pelliculle from '../assets/images/Group 25.webp';
+import Partenaire from '../assets/images/image-stand1.webp';
+import Activite from '../assets/images/image-stand2.webp';
+import Expo from '../assets/images/image-stand3.webp';
+import Stand from '../assets/icones/stand/Default.svg';
+import Seance from '../assets/icones/seance/Default.svg';
+import Billet from '../assets/icones/billet.svg';
+import Card from '../components/Card.astro';
+import { getFilms } from '../../backend/backend.mjs';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const films = await getFilms();
+const featuredFilms = films.slice(0, 3); // Sélectionne les 3 premiers films
+console.log(films);
 ---
 
 <Layout>
-	<h1 class="text-red-500">titre</h1>
+	
+	<div class="text-center p-6 border border-gray-300 rounded-lg bg-white shadow-lg">
+		<h3 class="text-2xl font-semibold mb-6">Bienvenu sur le site du festival Miaulywood</h3>
+  
+		<!-- Section Chat et Pelliculle (commenté, mais prêt à être utilisé) -->
+		<div class="mb-6">
+		  <!--<Chat/>-->
+		  <!--<Pelliculle/>-->	
+		</div>
+  
+		<!-- Section Seance (composant Astro) -->
+		<div class="flex flex-col items-center">
+			<Seance/>
+			<h4 class="text-xl font-medium mb-4">Programmation</h4>
+			<div class="w-full h-auto gap-6 flex flex-wrap justify-center bg-white overflow-hidden m-20 mt-0">
+				{featuredFilms.map((film) => (
+				  <Card {...film} />
+				))}
+			  </div>
+		</div>
+
+		
+
+		<!-- Section Stand (composant Astro) -->
+		<div class="flex flex-col items-center">
+			<Stand />
+			<h4 class="text-xl font-medium mb-4">Stand</h4>
+		</div>
+  
+		<!-- Liste des activités (secteurs d'intérêt) -->
+		<div class="space-y-4">
+		  <div>
+			<h5 class="text-lg">Associations de Protection Animale</h5>
+		  </div>
+		  <div>
+			<h5 class="text-lg">Ateliers créatifs pour petits et grands</h5>
+		  </div>
+		  <div>
+			<h5 class="text-lg">Le Musée Félin à Ciel Ouvert</h5>
+		  </div>
+		</div>
+  
+		<!-- Section Billets (composant Astro) -->
+		<div class="flex flex-col items-center m-4">
+			<Billet />
+			<h4 class="text-xl font-medium">Billets</h4>
+		</div>
+  
+		<!-- Bouton d'achat de billets -->
+		<button class="bg-white border-1 text-white py-2 px-4 hover:bg-green-600">
+		  <a href="/billet" class="text-orange-400 no-underline">Acheter mes Billets</a>
+		</button>
+	</div>
+
 </Layout>
