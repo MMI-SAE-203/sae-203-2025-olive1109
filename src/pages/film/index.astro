@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
+import Programme from '../../assets/icones/seance/Default.svg';
 import { getFilms } from '../../../backend/backend.mjs';
 
 // Récupérer les films triés par date
@@ -10,8 +11,10 @@ const films = await getFilms();
 <Layout>
   <!-- Affichage des films avec carousels -->
   <div class="w-full h-auto gap-6 flex flex-col justify-center bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden ">
-    <h2 class="text-2xl font-semibold mb-4">Films à venir</h2>
-
+   <div class="flex flex-col items-center">
+    <Programme />
+    <h2 class="text-2xl font-semibold mb-4">Programmation</h2>
+   </div>
     <!-- Carousel Container -->
     <div class="relative">
       <div class="flex overflow-x-auto space-x-6 snap-x snap-mandatory scroll-smooth" id="film-carousel">

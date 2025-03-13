@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Chat from '../assets/images/chat.webp';
-import Pelliculle from '../assets/images/Group 25.webp';
+import Pelliculle from '../assets/images/Group-25.webp';
 import Partenaire from '../assets/images/image-stand1.webp';
 import Activite from '../assets/images/image-stand2.webp';
 import Expo from '../assets/images/image-stand3.webp';
@@ -9,11 +9,12 @@ import Stand from '../assets/icones/stand/Default.svg';
 import Seance from '../assets/icones/seance/Default.svg';
 import Billet from '../assets/icones/billet.svg';
 import Card from '../components/Card.astro';
+import { Image } from 'astro:assets';
 import { getFilms } from '../../backend/backend.mjs';
 
 const films = await getFilms();
 const featuredFilms = films.slice(0, 3); // Sélectionne les 3 premiers films
-console.log(films);
+
 ---
 
 <Layout>
@@ -22,9 +23,9 @@ console.log(films);
 		<h3 class="text-2xl font-semibold mb-6">Bienvenue sur le site du festival Miaulywood</h3>
   
 		<!-- Section Chat et Pelliculle (commenté, mais prêt à être utilisé) -->
-		<div class="mb-6">
-		  <!--<Chat/>-->
-		  <!--<Pelliculle/>-->
+		<div class="mb-6 flex flex-wrap items-center justify-center text-center ">
+		  <Image src={Chat} alt="Chat" class="w-1-5 h-auto" />
+		  <Image src={Pelliculle} alt="Pelliculle" class="w-1/4 h-auto" />	
 		</div>
   
 		<!-- Section Seance (composant Astro) -->
@@ -47,20 +48,32 @@ console.log(films);
 		</div>
   
 		<!-- Liste des activités (secteurs d'intérêt) -->
-		<div class="space-y-4">
-		  <div>
-			<a href="/partenaire">img</a>
-			<h5 class="text-lg">Associations de Protection Animale</h5>
-		  </div>
-		  <div>
-			<a href="/atelier">img</a>
-			<h5 class="text-lg">Ateliers créatifs pour petits et grands</h5>
-		  </div>
-		  <div>
-			<a href="/exposition">img</a>
-			<h5 class="text-lg">Le Musée Félin à Ciel Ouvert</h5>
-		  </div>
+		<div class="space-y-4 flex flex-col items-center justify-center md:flex-row md:space-x-8 md:space-y-0">
+			<!-- Première section -->
+			<div class="flex flex-wrap items-center justify-center text-center">
+				<a href="/partenaire">
+				<Image src={Partenaire} alt="Partenaire" class="w-1/2 h-auto"/>
+				</a>
+				<h5 class="text-lg text-center">Associations de Protection Animale</h5>
+			</div>
+			
+			<!-- Deuxième section -->
+			<div class="flex flex-wrap items-center justify-center text-center">
+				<a href="/atelier">
+				<Image src={Activite} alt="Activite" class="w-1/2 h-auto"/>
+				</a>
+				<h5 class="text-lg text-center">Ateliers créatifs pour petits et grands</h5>
+			</div>
+			
+			<!-- Troisième section -->
+			<!-- <div class="flex flex-wrap items-center justify-center">
+				<a href="/exposition">
+				<Image src={Expo} alt="Expo" class="w-1/2 h-auto"/>
+				</a>
+				<h5 class="text-lg flex text-center">Le Musée Félin à Ciel Ouvert</h5>
+			</div> -->
 		</div>
+
   
 		<!-- Section Billets (composant Astro) -->
 		<div class="flex flex-col items-center m-4">

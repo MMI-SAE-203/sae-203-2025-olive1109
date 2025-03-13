@@ -1,26 +1,18 @@
 ---
+import {Image} from 'astro:assets';
 import Layout from "../../layouts/Layout.astro";
-import Ateliers from '../assets/images/image-stand2.webp';
+import imageteliers from '../assets/images/image-stand2.webp';
+import Carda from '../../components/Carda.astro';
 import { getAteliers } from '../../../backend/backend.mjs';
 
 const activites = await getAteliers();
-console.log(activitesctivites);
 ---
 
 <Layout>
     <h3>Ateliers créatifs pour petits et grands</h3>
-    <img src={Ateliers} alt="Image d'atelier" />
+    <Image src={imageteliers} alt="Image d'atelier" />
     
     <div>
-      {Activites.length > 0 ? (
-        Activites.map(activite => (
-          <div key={activite.id}>
-            <h4>{activite.titre}</h4> 
-            <p>{activite.description}</p>
-          </div>
-        ))
-      ) : (
-        <p>Aucun atelier disponible pour le moment.</p>
-      )}
+      <Carda/>
     </div>
   </Layout>

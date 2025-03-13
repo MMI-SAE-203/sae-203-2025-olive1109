@@ -1,0 +1,28 @@
+--- 
+import ImgPb from './ImgPb.astro';
+
+const { ...invites } = Astro.props;
+console.log(invites);
+---
+
+<div class="w-120 h-auto flex flex-colun bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+    <!-- Image Section -->
+    <div class="relative group align-middle">
+        <a href={`/invite/${invites.id}`}>
+            <ImgPb 
+                record={invites} 
+                field="photo" 
+                alt={invites.imgAlt || 'Affiche du invite'} 
+                classPicture="w-1/4 h-48 object-cover rounded-lg"  
+                classImg="w-50 m-20 ml-0 group-hover:grayscale-0 group-hover:mix-blend-normal"
+            />
+        </a>
+    </div>
+    <!-- Content Section -->
+    <div class="w-60 p-4 space-y-4">
+        <!-- Film Title -->
+        <h3 class="text-xl font-semibold text-gray-900 m-0">{invites.nom}</h3>
+        <!-- Film Synopsis -->
+        <div class="text-gray-700 line-clamp-2" set:html={invites.biographie}></div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+---
+const { ...activites } = Astro.props;
+---
+
+<div class="w-100 h-auto flex flex-colun bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+
+    <!-- Content Section -->
+    <div class="w-60 p-4 space-y-4">
+        <h3 class="text-xl font-semibold text-gray-900 m-0">{activites.atelier}</h3>
+        
+        <p class="text-sm text-gray-900 mb-2"> {activites.description}</p>
+        
+        <p class="text-gray-900 line-clamp-2">{activites.public}</p>
+    </div>
+</div>

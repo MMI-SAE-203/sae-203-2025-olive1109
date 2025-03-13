@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from '../assets/icones/Logo.svg';
+---
+
+<Layout>
+
+    <div class="flex justify-center items-center min-h-screen bg-gray-100 py-12">
+        <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Réservation de billets</h2>
+            
+            <!-- Carte de billet -->
+            <div class="flex flex-col justify-center md:flex-row gap-8 mb-8">
+                <!-- Informations sur les billets -->
+                <div class="w-full md:w-2/3 space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Informations sur les billets</h3>
+                    <p class="text-gray-600">
+                        Nos billets vous donnent accès à toutes nos séances de cinéma. Chaque billet est nominatif et doit être présenté à l'entrée de la salle.
+                    </p>
+                    <div class="bg-lime-50 p-4 rounded-lg border border-lime-200">
+                        <h4 class="font-medium text-lime-800 mb-2">Tarifs</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>1 Journée :<span class="font-semibold">10€</span></li>
+                            <li>2 Journées :<span class="font-semibold">17€</span></li>
+                            <li>3 Journées  :<span class="font-semibold">25€</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulaire de réservation -->
+            <form action="#" method="POST" class="space-y-4 border-t border-gray-200 pt-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Réserver vos billets</h3>
+                
+                <!-- Nom et Prénom -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-700">Nom</label>
+                        <input type="text" id="lastName" name="lastName" required class="w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-600" placeholder="Votre nom">
+                    </div>
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-700">Prénom</label>
+                        <input type="text" id="firstName" name="firstName" required class="w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-600" placeholder="Votre prénom">
+                    </div>
+                </div>
+    
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-600" placeholder="Votre email">
+                </div>
+    
+                <!-- Sélection de séance et nombre de billets -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="seance" class="block text-sm font-medium text-gray-700">Séance</label>
+                        <select id="seance" name="seance" required class="w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-600">
+                            <option value="">Sélectionnez le forfait</option>
+                            <option value="1 Journée">1 Journée</option>
+                            <option value="2 Journées">2 Journées</option>
+                            <option value="3 Journées">3 Journées</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="tickets" class="block text-sm font-medium text-gray-700">Nombre de billets</label>
+                        <select id="tickets" name="tickets" required class="w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-600">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <!-- Commentaires -->
+                <div>
+                    <label for="comments" class="block text-sm font-medium text-gray-700">Commentaires (optionnel)</label>
+                    <textarea id="comments" name="comments" rows="3" class="w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-600" placeholder="Informations supplémentaires"></textarea>
+                </div>
+    
+                <!-- Conditions générales -->
+                <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-lime-600 focus:ring-lime-500 border-gray-300 rounded">
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="terms" class="font-medium text-gray-700">J'accepte les <a href="#" class="text-lime-600 hover:underline">conditions générales</a></label>
+                    </div>
+                </div>
+    
+                <!-- Bouton de soumission -->
+                <div class="flex justify-center">
+                    <button type="submit" class="px-6 py-3 mt-4 text-white bg-lime-600 hover:bg-lime-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-600">
+                        Réserver mes billets
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</Layout>

@@ -6,7 +6,7 @@ export const pb = new PocketBase('http://127.0.0.1:8090'); // Adresse du serveur
 export const getFilms = async (collection = "films") => {
     try {
         const films = await pb.collection(collection).getFullList({
-            expand: 'seance'
+            expand: 'Seance'
         });
 
         // Vérifier que les films ont bien une date de projection
@@ -27,17 +27,10 @@ export const getFilms = async (collection = "films") => {
 
 // Récupérer les infos d'un film par son ID
 
-export const getFilmInfoById = async (collection = "films", filmId) => {
+export const getFilmId = async (id) => {
     try {
-        const film = await pb.collection(collection).getOne(filmId);
-        // Ajouter l'URL complète de l'image au film
-        const updatedFilm = {
-            ...film,
-            imageUrl: film.affiche
-                ? pb.files.getURL(film, film.affiche[0], { thumb: "1024x1024" })
-                : null,
-        };
-        return updatedFilm;
+        const film = await pb.collection('films').getOne(id, {expand: 'invite'});
+        return film;
     } catch (error) {
         console.error("Erreur lors de la récupération du film :", error);
         return null; // Retourne null en cas d'erreur
@@ -45,23 +38,26 @@ export const getFilmInfoById = async (collection = "films", filmId) => {
 };
 
 // Récupérer toutes les activités triées par type
-export async function Activitetype() {
+export async function getAteliers() {
     try {
-        const ActiviteparType = await pb.collection('activite').getFullList({
-            sort: 'type'
-        });
+      const activites = await pb.collection('activite').getFullList({
+        sort: 'type',
+      });
+      // Filtrer les activités de type "atelier"
+      return activites.filter(activite => activite.type === "ateliers");
     } catch (error) {
-        console.error("Erreur lors de la récupération des activités :", error);
-        return [];
+      console.error("Erreur lors de la récupération des activités :", error);
+      return [];
     }
-}
+  }
 
 // Récupérer tous les invités triés par ordre alphabétique
 export async function Invitealphabet() {
     try {
-        const Ivite = await pb.collection('invite').getFullList({
+        const invites = await pb.collection('invite').getFullList({
             sort: 'nom'
         });
+        return invites;
     } catch (error) {
         console.error("Erreur lors de la récupération des invités :", error);
         return [];
@@ -78,7 +74,7 @@ export async function ActiviteId(activityId) {
     }
 }
 // Récupérer les infos d'un invité par son ID
-export async function InviteId(participantId) {
+export async function getInviteId(participantId) {
     try {
         const Invite = await pb.collection('invite').getOne(participantId);
     } catch (error) {
@@ -86,12 +82,5 @@ export async function InviteId(participantId) {
         return null;
     }
 }
-// Ajouter ou modifier un film, une activité ou un invité
-export async function InviteId(participantId) {
-    try {
-        return await pb.collection('invite').getOne(participantId);
-    } catch (error) {
-        console.error("Erreur lors de la récupération des infos de l'invité :", error);
-        return null;
-    }
-} 
+
+

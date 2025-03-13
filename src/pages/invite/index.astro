@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro"; 
+import { Invitealphabet } from "../../../backend/backend.mjs";
+import Cardi from "../../components/Cardi.astro";
+
+const invites = await Invitealphabet() ?? []; 
+console.log(invites);
+
+---
+<Layout>
+    <div class="overflow-x-auto flex space-x-4 px-4 snap-x snap-mandatory">
+        {
+          invites.length > 0 ? (
+            invites.map((invite) => (
+            
+              <div class="
+                w-[300px] h-[400px]
+                sm:w-[400px] sm:h-[500px]
+                md:w-[500px] md:h-[600px]
+                flex-shrink-0 snap-center
+              ">
+                <Cardi {...invites} />
+              </div>
+            ))
+          ) : (
+            <p>Aucun invité prévu.</p>
+          )
+        }
+      </div>
+  </Layout>
