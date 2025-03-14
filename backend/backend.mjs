@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase('http://127.0.0.1:8090'); // Adresse du serveur PocketBase
+export const pb = new PocketBase('https://sae203.noelie-ahuir.fr:443'); // Adresse du serveur PocketBase
 
 // Récupérer tous les films triés par date de projection
 export const getFilms = async (collection = "films") => {
